@@ -5,7 +5,9 @@ import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+@JsonIgnoreProperties(ignoreUnknown = true)//indicate that any properties not bound in this type should be ignored.
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
