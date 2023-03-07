@@ -18,12 +18,12 @@ then go to "src/main/java" and open package "com.bartoszTanski.weatherservice"
 
 1. Open browser
 
-2. In page addres field write: "http://localhost:8080/api/v1/weather/{date}" where date* is in format **YYYY-MM-DD**
+2. In page addres field write: "http://localhost:8080/api/v1/weather/{date}" where {date}* is in format **YYYY-MM-DD**
 ######   *date range is 16 days from current day
 
 ex.
 ```
-"http://localhost:8080/api/v1/weather/2023-03-08"
+http://localhost:8080/api/v1/weather/2023-03-08
 ```		
 
 3. Application returns JSON object 
