@@ -10,35 +10,53 @@ is a spring boot app that provides REST API endpoint that returns JSON with weat
 3. In your IDE open package explorer and open "weather-service" project,
 then go to "src/main/java" and open package "com.bartoszTanski.weatherservice"
 
-4. Open "WeatherServiceApplication.java" file in IDE and run it as java application
+4. Create MySQL locations_db schema 
 
-5. Application should start at localhost:8080
+5. Update MySQL database properties in file application.yaml (username, password and port if not default)
+
+6. Open "WeatherServiceApplication.java" file in IDE and run it as java application
+
+7. Application should start at localhost:8080
+
 ***
 ## To acces API endpoint:
 
 1. Open browser
 
-2. In page addres field write: "http://localhost:8080/api/v1/weather/{id}" where {id}* is integer 
-######   *id range is up to 1mln
+2. In page addres field write: "http://localhost:8080/api/v1/locations" 
+-this endpoint will return all locations for which weather data can be fetched (few locations are added on application start)
 
-ex.
-```
-http://localhost:8080/api/v1/weather/331332
-```		
+3. In page addres field write: "http://localhost:8080/api/v1/weather?locationId={id}"
+*where {id} is location id - choosen from locations list returned by endpoint at p.2
+-this endpoint will return daily and hourly weather forecast data for next 14 days 
+ex. http://localhost:8080/api/v1/weather?locationId=756135
 
-3. Application returns JSON object 
+4.You can search for locations by name using enpoint: "http://localhost:8080/api/v1/locations/search" and specifying parameters name and optionally country
+-this endpoint will return all locations valid for regex {name} provided and (optionally) reduced to locations in choosen country 
+ex. http://localhost:8080/api/v1/locations/search?name=wars&country=Poland
+
+5.You can add custom location by using enpoint: "http://localhost:8080/api/v1/locations" with method POST using Postman and specifying parameters:
+- name -name of City or location name  ex. Berlin / London / myHome 
+- country - country name for the location ex. Germany
+- latitude - latitude of location ex. 52.22977
+- longitude - longitude of location ex. 21.01178
+- timeZone - timezone of location (optional) ex. Europe/Warsaw
+
+######  
+
+
+## Application returns JSON object 
 
 ex.
 ``` 
-{
- "locationName":"Fortaleza",
- "country":"BR",
- "temperature":26.9,
- "windSpeed":5.5
-}
+[
+  {
+    "id": 756135,   *use this id to search for weather data
+    "name": "Warsaw",
+    "country": "Poland",
+    "latitude": 52.22977,
+    "longitude": 21.01178,
+    "timeZone": "Europe/Warsaw"
+  }
+]
 ```
-### where:
-###### **"locationName"** is name of location for which weather forecast is given
-###### **"country"** is two letters ISO country code      (_[for ISO country codes look here](https://countrycode.org "countrycode.org")_)
-###### **"temperature"** is temperature in degrees Celcius
-###### **"windSpeed"** is wind speed in meters per second (m/s)
