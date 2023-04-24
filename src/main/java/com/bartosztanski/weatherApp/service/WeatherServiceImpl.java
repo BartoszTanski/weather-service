@@ -2,6 +2,8 @@ package com.bartosztanski.weatherApp.service;
 
 import org.springframework.stereotype.Service;
 
+import com.bartosztanski.weatherApp.error.LocationNotFoundExcetpion;
+import com.bartosztanski.weatherApp.error.WeatherApiNotAvailable;
 import com.bartosztanski.weatherApp.model.Location;
 import com.bartosztanski.weatherApp.model.WeatherData;
 import com.bartosztanski.weatherApp.model.WeatherResponse;
@@ -17,7 +19,7 @@ public class WeatherServiceImpl implements WeatherService {
 	}
 	
 	@Override
-	public WeatherResponse getWeather(String locationId) throws Exception {
+	public WeatherResponse getWeather(Long locationId) throws LocationNotFoundExcetpion, WeatherApiNotAvailable {
 		Location location = locationService.getById(locationId);
 		WeatherData weatherData = fetchDataService.getData(location);
 		WeatherResponse weatherResponse = WeatherResponse.builder()

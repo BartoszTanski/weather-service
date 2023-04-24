@@ -22,7 +22,7 @@ public class WeatherController {
 	}
 	
 	@GetMapping("/weather")
-	public ResponseEntity<WeatherResponse> getWeather(@RequestParam("locationId") String locationId) throws Exception {
+	public ResponseEntity<WeatherResponse> getWeather(@RequestParam("locationId") Long locationId) throws Exception {
 		WeatherResponse weatherResponse = weatherService.getWeather(locationId);
 		return ResponseEntity.ok(weatherResponse);
 	}

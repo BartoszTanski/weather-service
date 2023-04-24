@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.bartosztanski.weatherApp.error.LocationNotFoundExcetpion;
 import com.bartosztanski.weatherApp.model.Location;
 import com.bartosztanski.weatherApp.repository.LocationsRepository;
 @Service
@@ -17,9 +18,9 @@ public class LocationServiceImpl implements LocationService{
 	}
 	
 	@Override
-	public Location getById(String locationId) throws Exception {
+	public Location getById(Long locationId) throws LocationNotFoundExcetpion {
 		Optional<Location> location = locationsRepository.findById(locationId); 
-		if(location==null) throw new Exception("No such location in DB");
+		if(location.isEmpty()) throw new LocationNotFoundExcetpion("No such location in DB");
 		return location.get();
 	}
 

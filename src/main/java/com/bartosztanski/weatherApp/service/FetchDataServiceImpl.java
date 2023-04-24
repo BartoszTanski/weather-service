@@ -3,12 +3,13 @@ package com.bartosztanski.weatherApp.service;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.bartosztanski.weatherApp.error.WeatherApiNotAvailable;
 import com.bartosztanski.weatherApp.model.Location;
 import com.bartosztanski.weatherApp.model.WeatherData;
 @Service
 public class FetchDataServiceImpl implements FetchDataService{
 	
-	public WeatherData getData(Location location) throws Exception {
+	public WeatherData getData(Location location) throws WeatherApiNotAvailable {
 		 	
 		String uri = "https://api.open-meteo.com/v1/forecast?latitude="+
 				location.getLatitude()+"&longitude="+location.getLongitude()+"&hourly=temperature_2m,apparent_temperature,precipitation,rain,"

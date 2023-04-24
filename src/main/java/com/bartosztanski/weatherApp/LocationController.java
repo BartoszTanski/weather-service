@@ -36,8 +36,8 @@ public class LocationController {
 				.name(name)
 				.latitude(latitude)
 				.longitude(longitude)
-				.countryCode(country)
 				.timeZone(timeZone.orElse("auto"))
+				.country(country)
 				.build();
 		location = locationService.addLocation(location);
 		return ResponseEntity.ok(location);
