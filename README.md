@@ -10,9 +10,9 @@ is a spring boot app that provides REST API endpoint that returns JSON with weat
 3. In your IDE open package explorer and open "weather-service" project,
 then go to "src/main/java" and open package "com.bartoszTanski.weatherservice"
 
-4. Create MySQL locations_db schema 
+4. Create MySQL database called "locations_db" 
 
-5. Update MySQL database properties in file application.yaml (username, password and port if not default)
+5. Update MySQL database properties in file application.yaml (username, password, port if not default, MySQL db name if not p.4)
 
 6. Open "WeatherServiceApplication.java" file in IDE and run it as java application
 
