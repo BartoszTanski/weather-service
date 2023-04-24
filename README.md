@@ -1,6 +1,6 @@
-# **Surfers weather service**
-Surfers weather service
-is a spring boot app that provides REST API endpoint that returns best localization for surfing and current weather conditions there.
+# **Weather service**
+weather service
+is a spring boot app that provides REST API endpoint that returns JSON with weather forecast for next 16 days based on Location provided.
 ***
 ## To start the application:
 1. Download the file with project and unpack it
@@ -18,12 +18,12 @@ then go to "src/main/java" and open package "com.bartoszTanski.weatherservice"
 
 1. Open browser
 
-2. In page addres field write: "http://localhost:8080/api/v1/weather/{date}" where {date}* is in format **YYYY-MM-DD**
-######   *date range is 16 days from current day
+2. In page addres field write: "http://localhost:8080/api/v1/weather/{id}" where {id}* is integer 
+######   *id range is up to 1mln
 
 ex.
 ```
-http://localhost:8080/api/v1/weather/2023-03-08
+http://localhost:8080/api/v1/weather/331332
 ```		
 
 3. Application returns JSON object 
